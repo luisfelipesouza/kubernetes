@@ -1,0 +1,16 @@
+# Using PersistentVolume (GKE)
+apiVersion: v1 
+kind: Pod 
+metadata:
+  name: pod-pv
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:latest
+      volumeMounts:
+        - mountPath: /volume-container
+          name: primeiro-volume
+  volumes:
+    - name: primeiro-volume
+      PersistentVolumeClaim:
+        claimName: pvc-1

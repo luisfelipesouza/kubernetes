@@ -1,0 +1,16 @@
+# Using StorageClass (GKE)
+apiVersion: 1
+kind: Pod
+metadata:
+  name: pod-sc
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:latest
+      volumeMounts:
+        - mountPath: /volume-container
+          name: primeiro-volume
+  volumes:
+    - name: primeiro-volume
+      PersistentVolumeClaim:
+        claimName: pvc-2

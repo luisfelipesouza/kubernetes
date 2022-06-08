@@ -1,0 +1,18 @@
+# Using PersistentVolume (GKE)
+apiVersion: v1 
+kind: PersistentVolume
+#gcePersistenDisk (Google Cloud Engine)
+metadata:
+  name: pv-1
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    #- ReadWriteMany
+    - ReadWriteOnce
+    #- ReadOnlyMany
+  gcePersistentDisk:
+    pdName: pv-disk # name of GCE Disk
+  storageClassName: standard
+
+# kubectl get pv
